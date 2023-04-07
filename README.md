@@ -1,4 +1,4 @@
-# r-AdjNorm
+# Investigating Accuracy-Novelty Performance for Graph-based Collaborative Filtering
 If you use these codes, please cite the following paper, thank you:
 
 @inproceedings{zhao2022investigating,
