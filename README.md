@@ -1,4 +1,4 @@
-# Investigating Accuracy-Novelty Performance for Graph-based Collaborative Filtering
+# Investigating Accuracy-Novelty Performance for Graph-based Collaborative Filtering. SIGIR22
 If you use these codes, please cite the following paper, thank you:
 
 @inproceedings{zhao2022investigating,
