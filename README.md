@@ -10,10 +10,10 @@ On this basis, we have implemented the following baselines:
 
 > DegDrop (DropEdge with degree perference): Yu Rong, Wenbing Huang, Tingyang Xu, and Junzhou Huang. DropEdge: Towards Deep Graph Convolutional Networks on Node Classification. In ICLR 2019.
 
-## Example to Run the Codes
+## Usages
 Using the following command to run this code (see the parser function in src/utility/parser.py to get the meaning of more parameters):
 > python3 main.py --dataset amazon-book --alg_type lightgcn --adj_type norm --lr 0.001 --batch_size 1024 --regs [1e-4] --layer_size [64,64,64] --r 1
-## Environment Requirement
+## Requirements
 - tensorflow == 1.15.0
 - numpy == 1.16.4
 - scipy == 1.2.1
