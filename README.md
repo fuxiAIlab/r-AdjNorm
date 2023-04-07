@@ -1,6 +1,13 @@
 # Investigating Accuracy-Novelty Performance for Graph-based Collaborative Filtering. SIGIR22
+## introduction
+This is our Tensorflow implementation for the paper. Our codes are adapted from the following repo:
+> https://github.com/xiangwang1223/neural_graph_collaborative_filtering. 
+On this basis, we have implemented the following baselines:
+> PPNW: Kachun Lo and Tsukasa Ishigaki. Matching Novelty While Training: Novel Recommendation Based on Personalized Pairwise Loss Weighting. In ICDM 2019. 468–477.
+> Reg&PC:Ziwei Zhu, Yun He, Xing Zhao, Yin Zhang, Jianling Wang, and James Caverlee. Popularity-Opportunity Bias in Collaborative Filtering. In WSDM 2021. 85–93.
+
 ## Example to Run the Codes
-This is our Tensorflow implementation for the paper. Using the following command to run this code (see the parser function in src/utility/parser.py to get the meaning of more parameters):
+Using the following command to run this code (see the parser function in src/utility/parser.py to get the meaning of more parameters):
 > python3 main.py --dataset amazon-book --alg_type lightgcn --adj_type norm --lr 0.001 --batch_size 1024 --regs [1e-4] --layer_size [64,64,64] --alpha 1
 ## Environment Requirement
 - tensorflow == 1.15.0
