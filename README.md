@@ -6,11 +6,13 @@ This is our Tensorflow implementation for the paper. Our codes are adapted from 
 On this basis, we have implemented the following baselines:
 > PPNW: Kachun Lo and Tsukasa Ishigaki. Matching Novelty While Training: Novel Recommendation Based on Personalized Pairwise Loss Weighting. In ICDM 2019. 468–477.
 
->Reg&PC:Ziwei Zhu, Yun He, Xing Zhao, Yin Zhang, Jianling Wang, and James Caverlee. Popularity-Opportunity Bias in Collaborative Filtering. In WSDM 2021. 85–93.
+> Reg&PC:Ziwei Zhu, Yun He, Xing Zhao, Yin Zhang, Jianling Wang, and James Caverlee. Popularity-Opportunity Bias in Collaborative Filtering. In WSDM 2021. 85–93.
+
+> DegDrop (DropEdge with degree perference): Yu Rong, Wenbing Huang, Tingyang Xu, and Junzhou Huang. DropEdge: Towards Deep Graph Convolutional Networks on Node Classification. In ICLR 2019.
 
 ## Example to Run the Codes
 Using the following command to run this code (see the parser function in src/utility/parser.py to get the meaning of more parameters):
-> python3 main.py --dataset amazon-book --alg_type lightgcn --adj_type norm --lr 0.001 --batch_size 1024 --regs [1e-4] --layer_size [64,64,64] --alpha 1
+> python3 main.py --dataset amazon-book --alg_type lightgcn --adj_type norm --lr 0.001 --batch_size 1024 --regs [1e-4] --layer_size [64,64,64] --r 1
 ## Environment Requirement
 - tensorflow == 1.15.0
 - numpy == 1.16.4
