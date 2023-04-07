@@ -125,7 +125,6 @@ class Data(object):
         self.sample_list = []
         for i  in range(self.n_items):
             self.sample_list += [i] * int(self.item_cnt[i]**args.ns)
-        print('length sample list', len(self.sample_list), args.ns)       
 
 
     def get_adj_mat(self):
@@ -135,7 +134,7 @@ class Data(object):
         return adj_mat, norm_adj_mat, mean_adj_mat, item_pop_rev, d_adj
 
   
-    def get_sample_adj_mat(self, percent, pop_debias):
+    def get_sample_adj_mat(self, percent, pop_penalty):
         adj_mat = sp.dok_matrix((self.n_users + self.n_items, self.n_users + self.n_items), dtype=np.float32)        
         adj_mat = adj_mat.tolil()
         R = self.R.tocoo()#self.R.tolil()
@@ -167,11 +166,9 @@ class Data(object):
             nnz = train_adj.nnz
             #perm = np.random.permutation(nnz)
             preserve_nnz = int(nnz*percent)
-            if pop_debias:
-               print('pop_debias')
+            if pop_penalty:
                weights = normalized_adj_single(train_adj, bi=True).data
                norm_weights = weights / weights.sum()
-               print(nnz, norm_weights, norm_weights.shape)
                nnz = len(norm_weights)
                preserve_nnz = int(nnz*percent)
                perm = np.random.choice(nnz, preserve_nnz, replace=False, p=norm_weights)
@@ -210,19 +207,16 @@ class Data(object):
         def normalized_adj_single(adj, verbose= False):
             rowsum = np.array(adj.sum(1))
 
-            alpha =  args.alpha
-            beta = args.beta
-            if verbose:
-                np.savetxt('/data/GCN_pop_bias/'+str(args.dataset)+'_degree.csv', rowsum,  delimiter=',')
-            d_inv = np.power(rowsum, alpha-1).flatten()
+            r =  args.r
+            d_inv = np.power(rowsum, r-1).flatten()
             d_inv[np.isinf(d_inv)] = 0.
             d_mat_inv = sp.diags(d_inv)
 
-            d_inv_ = np.power(rowsum, -alpha).flatten()
+            d_inv_ = np.power(rowsum, -r).flatten()
             d_inv_[np.isinf(d_inv_)] = 0.
             d_mat_inv_ = sp.diags(d_inv_)
 
-            norm_adj = d_mat_inv.dot(beta * sp.identity(adj.shape[0]) + (1-beta)*adj).dot(d_mat_inv_)
+            norm_adj = d_mat_inv.dot(adj).dot(d_mat_inv_)
             return norm_adj.tocoo()
 
         def check_adj_if_equal(adj):

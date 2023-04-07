@@ -485,7 +485,7 @@ if __name__ == '__main__':
         n_batch = data_generator.n_train // args.batch_size + 1
         
         if args.drop_edge == 1 and (epoch + 1) % 10 ==0:
-            sample_adj = data_generator.get_sample_adj_mat(args.drop_edge_percent, args.pop_debias)
+            sample_adj = data_generator.get_sample_adj_mat(args.drop_edge_percent, args.pop_penalty)
             model.norm_adj = sample_adj
             print('drop edge n_interactions', len(model.norm_adj.nonzero()[0]), model.norm_adj.sum(axis=0) )#len(model.norm_adj.nonzero()[0]))
 
@@ -510,7 +510,7 @@ if __name__ == '__main__':
         if (epoch ) % 20 != 0:
             if args.drop_edge ==1:
                 start = time()
-                sample_adj = data_generator.get_sample_adj_mat(args.drop_edge_percent, args.pop_debias)
+                sample_adj = data_generator.get_sample_adj_mat(args.drop_edge_percent, args.pop_penalty)
                 model.norm_adj= sample_adj
 
             if args.verbose > 0 and epoch % args.verbose == 0:

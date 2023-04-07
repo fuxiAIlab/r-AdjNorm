@@ -50,16 +50,16 @@ def parse_args():
                         help='single') 
  
     parser.add_argument('--pop_reg', type=int, default=0,
-                        help='pop_reg')
-    parser.add_argument('--pop_reg_decay', type=float, default='1.',
-                        help='pop_reg_decay')
+                        help='whether to enable pop_reg')
+    parser.add_argument('--pop_reg_decay', type=float, default=1.,
+                        help='the hyperparameter for pop_reg')
     
     parser.add_argument('--drop_edge', type=int, default=0,
-                        help='drop_edge')
+                        help='whether to  turn on DropEdge')
     parser.add_argument('--drop_edge_percent', type=float, default=0.5,
-                        help='drop_edge_percent') 
-    parser.add_argument('--pop_debias', type=float, default=0,
-                        help='pop_debias')     
+                        help='the percent of DropEdge') 
+    parser.add_argument('--pop_penalty', type=float, default=0,
+                        help='whether to  enable pop_penalty(degree penalty for popoluar nodes) when conducting DropEdge ')     
  
     parser.add_argument('--gpu_id', type=int, default=0,
                         help='0 for NAIS_prod, 1 for NAIS_concat')
@@ -86,20 +86,29 @@ def parse_args():
     parser.add_argument('--skip', type=int, default=0,
                         help='skip the test')
     
-    parser.add_argument('--alpha', type=float, default=0.5)
-    parser.add_argument('--monitor', type=bool, default=False)
+    parser.add_argument('--r', type=float, default=0.5, 
+                        help='normalization coefficient')
+    parser.add_argument('--monitor', type=bool, default=False, 
+                        help='monitor the test evaluation')
      
-    parser.add_argument('--beta', type=float, default=0.) 
     parser.add_argument('--negative_sample', type=int, default=0)
     parser.add_argument('--positive_sample', type=int, default=0)
-    parser.add_argument('--ns', type=float, default=0)
+    parser.add_argument('--ns', type=float, default=0,
+                        help='the hyperparameter for  negative sampling')
    
-    parser.add_argument('--ppnw', type=int, default=0) 
-    parser.add_argument('--ppnw_a', type=float, default=1)
-    parser.add_argument('--ppnw_g', type=float, default=1)
-    parser.add_argument('--ppnw_l', type=float, default=1)
+    parser.add_argument('--ppnw', type=int, default=0, 
+                        help='the hyperparameter for  ppnw') 
+    parser.add_argument('--ppnw_a', type=float, default=1, 
+                        help='the hyperparameter for  ppnw')
+    parser.add_argument('--ppnw_g', type=float, default=1, 
+                        help='the hyperparameter for  ppnw')
+    parser.add_argument('--ppnw_l', type=float, default=1, 
+                        help='the hyperparameter for  ppnw')
   
-    parser.add_argument('--pc', type=int, default=0)
-    parser.add_argument('--pc_a', type=float, default=1)
-    parser.add_argument('--pc_b', type=float, default=0.5)
+    parser.add_argument('--pc', type=int, default=0, 
+                        help='the hyperparameter for  pc')
+    parser.add_argument('--pc_a', type=float, default=1, 
+                        help='the hyperparameter for  pc')
+    parser.add_argument('--pc_b', type=float, default=0.5, 
+                        help='the hyperparameter for  pc')
     return parser.parse_args()
