@@ -4,6 +4,9 @@ This is our Tensorflow implementation for the paper. Using the following command
 > python3 main.py --dataset amazon-book --alg_type lightgcn --adj_type norm --lr 0.001 --batch_size 1024 --regs [1e-4] --layer_size [64,64,64] --alpha 1
 ## Environment Requirement
 - tensorflow == 1.15.0
+- numpy == 1.16.4
+- scipy == 1.2.1
+- scikit-learn == 0.20.2
 ## Reference
 If you use these codes, please cite the following paper, thank you:
 ```
