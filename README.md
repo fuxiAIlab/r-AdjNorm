@@ -1,5 +1,5 @@
 # Investigating Accuracy-Novelty Performance for Graph-based Collaborative Filtering. SIGIR22
-## introduction
+## Introduction
 This is our Tensorflow implementation for the paper. Our codes are adapted from the following repo:
 > https://github.com/xiangwang1223/neural_graph_collaborative_filtering. 
 
