@@ -13,7 +13,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Run AdjNorm.")
     parser.add_argument('--weights_path', nargs='?', default='',
                         help='Store model path.')
-    parser.add_argument('--data_path', nargs='?', default='./data/',
+    parser.add_argument('--data_path', nargs='?', default='../data/',
                         help='Input data path.')
     parser.add_argument('--proj_path', nargs='?', default='',
                         help='Project path.')
