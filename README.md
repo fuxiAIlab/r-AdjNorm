@@ -1,5 +1,8 @@
 # Investigating Accuracy-Novelty Performance for Graph-based Collaborative Filtering. SIGIR22
-This is our Tensorflow implementation for the paper. If you use these codes, please cite the following paper, thank you:
+This is our Tensorflow implementation for the paper. Using the following command to run this code:
+> python3 ./main.py --dataset amazon-book --alg_type lrgccf --adj_type norm --lr 0.001 --batch_size 8192 --regs [1e-4] --skip 1 --layer_size [64,64,64] 
+## Reference
+If you use these codes, please cite the following paper, thank you:
 ```
 @inproceedings{zhao2022investigating,
   title={Investigating Accuracy-Novelty Performance for Graph-based Collaborative Filtering},
